@@ -1,0 +1,221 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp3heg0acyjxx"]
+
+[ext_resource type="Script" path="res://COM.cs" id="1_4ioi0"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_xibm8"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_rl7uv"]
+events = [SubResource("InputEventKey_xibm8")]
+
+[node name="Window" type="Control" node_paths=PackedStringArray("COMOption", "SerialOut", "BaudRate", "ClearButton", "SerialIn", "SendButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4ioi0")
+COMOption = NodePath("BackgroundPanel/Margins/SplitView/Input Tabs/Configuration/Margins/Vertical Items/Serial Port Configuration/Serial port selector")
+SerialOut = NodePath("BackgroundPanel/Margins/SplitView/Output Log Container/Serial Output Log")
+BaudRate = NodePath("BackgroundPanel/Margins/SplitView/Input Tabs/Configuration/Margins/Vertical Items/Baud Rate Configuration/Baud Rate selector")
+ClearButton = NodePath("BackgroundPanel/Margins/SplitView/Output Log Container/Serial Output Clear")
+SerialIn = NodePath("BackgroundPanel/Margins/SplitView/Output Log Container/Input Container/Command Input")
+SendButton = NodePath("BackgroundPanel/Margins/SplitView/Output Log Container/Input Container/Send Command")
+
+[node name="BackgroundPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margins" type="MarginContainer" parent="BackgroundPanel"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 1147.0
+offset_bottom = 643.0
+
+[node name="SplitView" type="HBoxContainer" parent="BackgroundPanel/Margins"]
+layout_mode = 2
+
+[node name="Input Tabs" type="TabContainer" parent="BackgroundPanel/Margins/SplitView"]
+layout_mode = 2
+size_flags_horizontal = 3
+tab_alignment = 1
+
+[node name="Configuration" type="Panel" parent="BackgroundPanel/Margins/SplitView/Input Tabs"]
+layout_mode = 2
+
+[node name="Margins" type="MarginContainer" parent="BackgroundPanel/Margins/SplitView/Input Tabs/Configuration"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.01
+anchor_right = 0.99
+anchor_bottom = 0.99
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Vertical Items" type="VBoxContainer" parent="BackgroundPanel/Margins/SplitView/Input Tabs/Configuration/Margins"]
+layout_mode = 2
+
+[node name="Serial Port Configuration" type="HBoxContainer" parent="BackgroundPanel/Margins/SplitView/Input Tabs/Configuration/Margins/Vertical Items"]
+layout_mode = 2
+
+[node name="Serial Port Label" type="Label" parent="BackgroundPanel/Margins/SplitView/Input Tabs/Configuration/Margins/Vertical Items/Serial Port Configuration"]
+layout_mode = 2
+text = "Serial port: "
+
+[node name="Serial port selector" type="OptionButton" parent="BackgroundPanel/Margins/SplitView/Input Tabs/Configuration/Margins/Vertical Items/Serial Port Configuration"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Serial Port Help Button" type="Button" parent="BackgroundPanel/Margins/SplitView/Input Tabs/Configuration/Margins/Vertical Items/Serial Port Configuration"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "  ?  "
+
+[node name="Baud Rate Configuration" type="HBoxContainer" parent="BackgroundPanel/Margins/SplitView/Input Tabs/Configuration/Margins/Vertical Items"]
+layout_mode = 2
+
+[node name="Baud Rate Label" type="Label" parent="BackgroundPanel/Margins/SplitView/Input Tabs/Configuration/Margins/Vertical Items/Baud Rate Configuration"]
+layout_mode = 2
+text = "Baud rate: "
+
+[node name="Baud Rate selector" type="OptionButton" parent="BackgroundPanel/Margins/SplitView/Input Tabs/Configuration/Margins/Vertical Items/Baud Rate Configuration"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Baud Rate Help Button" type="Button" parent="BackgroundPanel/Margins/SplitView/Input Tabs/Configuration/Margins/Vertical Items/Baud Rate Configuration"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "  ?  "
+
+[node name="Bottom Button Container" type="VBoxContainer" parent="BackgroundPanel/Margins/SplitView/Input Tabs/Configuration/Margins"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="Bottom Button Container Part 2" type="HBoxContainer" parent="BackgroundPanel/Margins/SplitView/Input Tabs/Configuration/Margins/Bottom Button Container"]
+layout_mode = 2
+
+[node name="Close Button" type="Button" parent="BackgroundPanel/Margins/SplitView/Input Tabs/Configuration/Margins/Bottom Button Container/Bottom Button Container Part 2"]
+layout_mode = 2
+tooltip_text = "Cleanly shut down Digi-Go"
+text = "Close"
+
+[node name="Connect Button" type="Button" parent="BackgroundPanel/Margins/SplitView/Input Tabs/Configuration/Margins/Bottom Button Container/Bottom Button Container Part 2"]
+layout_mode = 2
+tooltip_text = "Connect to the selected serial port"
+text = "Connect"
+
+[node name="Codes" type="Panel" parent="BackgroundPanel/Margins/SplitView/Input Tabs"]
+visible = false
+layout_mode = 2
+
+[node name="Digi-Dex" type="Panel" parent="BackgroundPanel/Margins/SplitView/Input Tabs"]
+visible = false
+layout_mode = 2
+
+[node name="Margins" type="MarginContainer" parent="BackgroundPanel/Margins/SplitView/Input Tabs/Digi-Dex"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.01
+anchor_right = 0.99
+anchor_bottom = 0.99
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NYI" type="RichTextLabel" parent="BackgroundPanel/Margins/SplitView/Input Tabs/Digi-Dex/Margins"]
+layout_mode = 2
+bbcode_enabled = true
+text = "Not yet implemented..."
+
+[node name="Info" type="Panel" parent="BackgroundPanel/Margins/SplitView/Input Tabs"]
+visible = false
+layout_mode = 2
+
+[node name="Margins" type="MarginContainer" parent="BackgroundPanel/Margins/SplitView/Input Tabs/Info"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.01
+anchor_right = 0.99
+anchor_bottom = 0.99
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Credits" type="RichTextLabel" parent="BackgroundPanel/Margins/SplitView/Input Tabs/Info/Margins"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][b][font_size=48]Digi-Go[/font_size][/b][/center]
+[center][font_size=18]Digimon Communicator[/font_size][/center]
+[center][font_size=18][url=\"https://github.com/avellea/gcom\"]Website[/url][/font_size][/center]
+
+
+[center]Build with Godot and ❤️ by Avellea[/center]
+
+Tech stack:
+[ul]Godot Engine[/ul]
+[ul].NET 7[/ul]
+[ul]System.IO.Ports[/ul]
+
+
+
+
+
+
+
+
+
+
+
+[right]v1.0[/right]"
+
+[node name="Output Log Container" type="VBoxContainer" parent="BackgroundPanel/Margins/SplitView"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Serial Output Clear" type="Button" parent="BackgroundPanel/Margins/SplitView/Output Log Container"]
+layout_mode = 2
+size_flags_horizontal = 8
+disabled = true
+text = "Clear"
+
+[node name="Serial Output Log" type="TextEdit" parent="BackgroundPanel/Margins/SplitView/Output Log Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 14
+editable = false
+
+[node name="Input Container" type="HBoxContainer" parent="BackgroundPanel/Margins/SplitView/Output Log Container"]
+layout_mode = 2
+
+[node name="Command Input" type="LineEdit" parent="BackgroundPanel/Margins/SplitView/Output Log Container/Input Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Enter command here"
+editable = false
+clear_button_enabled = true
+caret_blink = true
+
+[node name="Send Command" type="Button" parent="BackgroundPanel/Margins/SplitView/Output Log Container/Input Container"]
+layout_mode = 2
+disabled = true
+shortcut = SubResource("Shortcut_rl7uv")
+text = "Send"
+
+[connection signal="button_down" from="BackgroundPanel/Margins/SplitView/Input Tabs/Configuration/Margins/Vertical Items/Serial Port Configuration/Serial Port Help Button" to="." method="OnSerialPortHelpButtonDown"]
+[connection signal="button_down" from="BackgroundPanel/Margins/SplitView/Input Tabs/Configuration/Margins/Vertical Items/Baud Rate Configuration/Baud Rate Help Button" to="." method="OnBaudRateHelpButtonDown"]
+[connection signal="button_down" from="BackgroundPanel/Margins/SplitView/Input Tabs/Configuration/Margins/Bottom Button Container/Bottom Button Container Part 2/Close Button" to="." method="OnCloseButtonDown"]
+[connection signal="button_down" from="BackgroundPanel/Margins/SplitView/Input Tabs/Configuration/Margins/Bottom Button Container/Bottom Button Container Part 2/Connect Button" to="." method="OnConnectButtonDown"]
+[connection signal="button_down" from="BackgroundPanel/Margins/SplitView/Output Log Container/Serial Output Clear" to="." method="OnSerialOutputClearButton"]
+[connection signal="text_set" from="BackgroundPanel/Margins/SplitView/Output Log Container/Serial Output Log" to="." method="OnSerialOutputTextChanged"]
+[connection signal="text_submitted" from="BackgroundPanel/Margins/SplitView/Output Log Container/Input Container/Command Input" to="." method="OnCommandInputTextSubmit"]
+[connection signal="button_down" from="BackgroundPanel/Margins/SplitView/Output Log Container/Input Container/Send Command" to="." method="OnSendButtonDown"]

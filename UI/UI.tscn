@@ -1,0 +1,89 @@
+[gd_scene load_steps=2 format=3 uid="uid://cc6pyb73etr5o"]
+
+[ext_resource type="Script" path="res://COM.cs" id="1_e4c20"]
+
+[node name="Ui" type="Control" node_paths=PackedStringArray("COMOption", "SerialIn")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e4c20")
+COMOption = NodePath("Panel/HBoxContainer/TabContainer/Config/VBoxContainer/HBoxContainer/OptionButton")
+SerialIn = NodePath("Panel/HBoxContainer/VBoxContainer/HBoxContainer/SerialIn")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Config" type="Panel" parent="Panel/HBoxContainer/TabContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/TabContainer/Config"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/HBoxContainer/TabContainer/Config/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer/TabContainer/Config/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Serial port:"
+
+[node name="OptionButton" type="OptionButton" parent="Panel/HBoxContainer/TabContainer/Config/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Button2" type="Button" parent="Panel/HBoxContainer/TabContainer/Config/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 10
+text = "Apply"
+
+[node name="Codes" type="Button" parent="Panel/HBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SerialOut" type="TextEdit" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+editable = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SerialIn" type="LineEdit" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Send"
+
+[connection signal="button_down" from="Panel/HBoxContainer/TabContainer/Config/VBoxContainer/Button2" to="." method="OnApplyButtonDown"]
+[connection signal="button_down" from="Panel/HBoxContainer/VBoxContainer/HBoxContainer/Button" to="." method="OnSendButtonDown"]
