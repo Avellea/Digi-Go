@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bp3heg0acyjxx"]
+[gd_scene load_steps=6 format=3 uid="uid://bp3heg0acyjxx"]
 
-[ext_resource type="Script" path="res://COM.cs" id="1_4ioi0"]
+[ext_resource type="Script" path="res://Scripts/COM.cs" id="1_4ioi0"]
+[ext_resource type="Texture2D" uid="uid://cy66hd6o3qs3e" path="res://Assets/Sprites/dober.jpg" id="2_0ikwp"]
+[ext_resource type="Texture2D" uid="uid://dfhnbu7y2cl5t" path="res://Assets/Art/dober.jpg" id="3_g12cl"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_xibm8"]
 device = -1
@@ -131,10 +133,36 @@ anchor_bottom = 0.99
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="NYI" type="RichTextLabel" parent="BackgroundPanel/Margins/SplitView/Input Tabs/Digi-Dex/Margins"]
+[node name="Label" type="Label" parent="BackgroundPanel/Margins/SplitView/Input Tabs/Digi-Dex/Margins"]
+texture_filter = 2
 layout_mode = 2
-bbcode_enabled = true
+size_flags_horizontal = 0
+size_flags_vertical = 0
 text = "Not yet implemented..."
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundPanel/Margins/SplitView/Input Tabs/Digi-Dex"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 438.0
+offset_top = 131.0
+offset_right = 566.0
+offset_bottom = 257.0
+size_flags_horizontal = 0
+texture = ExtResource("2_0ikwp")
+stretch_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="BackgroundPanel/Margins/SplitView/Input Tabs/Digi-Dex"]
+texture_filter = 2
+layout_mode = 2
+offset_left = 438.0
+offset_top = 5.0
+offset_right = 758.0
+offset_bottom = 325.0
+scale = Vector2(0.394, 0.394)
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture = ExtResource("3_g12cl")
+stretch_mode = 2
 
 [node name="Info" type="Panel" parent="BackgroundPanel/Margins/SplitView/Input Tabs"]
 visible = false
