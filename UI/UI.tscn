@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bp3heg0acyjxx"]
 
-[ext_resource type="Script" path="res://Scripts/COM.cs" id="1_4ioi0"]
-[ext_resource type="Texture2D" uid="uid://cy66hd6o3qs3e" path="res://Assets/Sprites/dober.jpg" id="2_0ikwp"]
-[ext_resource type="Texture2D" uid="uid://dfhnbu7y2cl5t" path="res://Assets/Art/dober.jpg" id="3_g12cl"]
+[ext_resource type="Script" path="res://Scripts/UI.cs" id="1_04064"]
+[ext_resource type="Texture2D" uid="uid://cy66hd6o3qs3e" path="res://Assets/Sprites/dober.jpg" id="2_acj66"]
+[ext_resource type="Texture2D" uid="uid://dfhnbu7y2cl5t" path="res://Assets/Art/dober.jpg" id="3_kerpc"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_xibm8"]
 device = -1
@@ -11,18 +11,17 @@ keycode = 4194309
 [sub_resource type="Shortcut" id="Shortcut_rl7uv"]
 events = [SubResource("InputEventKey_xibm8")]
 
-[node name="Window" type="Control" node_paths=PackedStringArray("COMOption", "SerialOut", "BaudRate", "ClearButton", "SerialIn", "SendButton")]
+[node name="Window" type="Control" node_paths=PackedStringArray("BaudRate", "ClearButton", "PauseButton", "SerialIn", "SendButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_4ioi0")
-COMOption = NodePath("BackgroundPanel/Margins/SplitView/Input Tabs/Configuration/Margins/Vertical Items/Serial Port Configuration/Serial port selector")
-SerialOut = NodePath("BackgroundPanel/Margins/SplitView/Output Log Container/Serial Output Log")
+script = ExtResource("1_04064")
 BaudRate = NodePath("BackgroundPanel/Margins/SplitView/Input Tabs/Configuration/Margins/Vertical Items/Baud Rate Configuration/Baud Rate selector")
-ClearButton = NodePath("BackgroundPanel/Margins/SplitView/Output Log Container/Serial Output Clear")
+ClearButton = NodePath("BackgroundPanel/Margins/SplitView/Output Log Container/Serial Log Controls/Serial Output Clear")
+PauseButton = NodePath("BackgroundPanel/Margins/SplitView/Output Log Container/Serial Log Controls/Serial Output Pause")
 SerialIn = NodePath("BackgroundPanel/Margins/SplitView/Output Log Container/Input Container/Command Input")
 SendButton = NodePath("BackgroundPanel/Margins/SplitView/Output Log Container/Input Container/Send Command")
 
@@ -148,7 +147,7 @@ offset_top = 131.0
 offset_right = 566.0
 offset_bottom = 257.0
 size_flags_horizontal = 0
-texture = ExtResource("2_0ikwp")
+texture = ExtResource("2_acj66")
 stretch_mode = 4
 
 [node name="TextureRect2" type="TextureRect" parent="BackgroundPanel/Margins/SplitView/Input Tabs/Digi-Dex"]
@@ -161,7 +160,7 @@ offset_bottom = 325.0
 scale = Vector2(0.394, 0.394)
 size_flags_horizontal = 8
 size_flags_vertical = 0
-texture = ExtResource("3_g12cl")
+texture = ExtResource("3_kerpc")
 stretch_mode = 2
 
 [node name="Info" type="Panel" parent="BackgroundPanel/Margins/SplitView/Input Tabs"]
@@ -209,7 +208,16 @@ Tech stack:
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Serial Output Clear" type="Button" parent="BackgroundPanel/Margins/SplitView/Output Log Container"]
+[node name="Serial Log Controls" type="HBoxContainer" parent="BackgroundPanel/Margins/SplitView/Output Log Container"]
+layout_mode = 2
+
+[node name="Serial Output Pause" type="CheckButton" parent="BackgroundPanel/Margins/SplitView/Output Log Container/Serial Log Controls"]
+layout_mode = 2
+size_flags_horizontal = 10
+disabled = true
+text = "Pause"
+
+[node name="Serial Output Clear" type="Button" parent="BackgroundPanel/Margins/SplitView/Output Log Container/Serial Log Controls"]
 layout_mode = 2
 size_flags_horizontal = 8
 disabled = true
@@ -243,7 +251,8 @@ text = "Send"
 [connection signal="button_down" from="BackgroundPanel/Margins/SplitView/Input Tabs/Configuration/Margins/Vertical Items/Baud Rate Configuration/Baud Rate Help Button" to="." method="OnBaudRateHelpButtonDown"]
 [connection signal="button_down" from="BackgroundPanel/Margins/SplitView/Input Tabs/Configuration/Margins/Bottom Button Container/Bottom Button Container Part 2/Close Button" to="." method="OnCloseButtonDown"]
 [connection signal="button_down" from="BackgroundPanel/Margins/SplitView/Input Tabs/Configuration/Margins/Bottom Button Container/Bottom Button Container Part 2/Connect Button" to="." method="OnConnectButtonDown"]
-[connection signal="button_down" from="BackgroundPanel/Margins/SplitView/Output Log Container/Serial Output Clear" to="." method="OnSerialOutputClearButton"]
+[connection signal="toggled" from="BackgroundPanel/Margins/SplitView/Output Log Container/Serial Log Controls/Serial Output Pause" to="." method="OnSerialOutputPauseToggled"]
+[connection signal="button_down" from="BackgroundPanel/Margins/SplitView/Output Log Container/Serial Log Controls/Serial Output Clear" to="." method="OnSerialOutputClearButton"]
 [connection signal="text_set" from="BackgroundPanel/Margins/SplitView/Output Log Container/Serial Output Log" to="." method="OnSerialOutputTextChanged"]
 [connection signal="text_submitted" from="BackgroundPanel/Margins/SplitView/Output Log Container/Input Container/Command Input" to="." method="OnCommandInputTextSubmit"]
 [connection signal="button_down" from="BackgroundPanel/Margins/SplitView/Output Log Container/Input Container/Send Command" to="." method="OnSendButtonDown"]
